@@ -1,0 +1,234 @@
+/*
+ * lms.css
+ * This file is part of lamos
+ * 
+ * Copyright 2008-2009 Michel Messerschmidt
+ * 
+ * This program is free software: you can redistribute it and/or modify 
+ * it under the terms of the GNU General Public License as published by 
+ * the Free Software Foundation, either version 3 of the License, or (at 
+ * your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License 
+ * along with this program in the file LICENSE. 
+ * If not, see http://www.gnu.org/licenses/
+ */
+
+html {
+	font-family: sans-serif; font-style: normal; color: #000066;
+	background-color: #CCCCFF;
+}
+
+body {
+	font-family: sans-serif; font-style: normal; color: #000066;
+	background-color: #CCCCFF;
+	margin-left: 5px; margin-right: 5px; margin-top: 0px; margin-bottom: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+}
+
+/* pseudo elements */
+a:link { color: #000033; text-decoration: underline }
+
+a:visited { color: #333366; text-decoration: underline }
+
+/* not interpreted by Netscape 4 */
+a:hover {
+	color: #FFFFFF; background-color: #0000FF; text-decoration: none;
+	/*    font-style:normal; font-weight:normal; */
+	padding-top: 2px; padding-bottom: 2px; padding-left: 0px; padding-right: 0px;
+}
+
+a:active {
+	color: #FFFFFF; background-color: #0000FF; text-decoration: underline;
+	/*    font-style:normal; font-weight:normal */;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 0px; padding-right: 0px;
+}
+
+a:focus {
+	color: #FFFFFF; background-color: #0000FF; text-decoration: none;
+	/*    font-style:normal; font-weight:normal */;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 0px; padding-right: 0px;
+}
+
+/* default Layout for all elements */
+* { color: #000066 }
+
+h1, h2, h3, h4, h5, h6, p, div, ol, ul, li, caption, table, tbody, thead, tfoot, th, td {
+	font-family: sans-serif; font-style: normal;
+}
+
+pre, var, code { font-family: monospace; font-style: normal; color: #0000CC }
+
+h1, caption { text-align: center; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+
+h1 { font-size: 24pt; }
+
+h2 { font-size: 18pt; }
+
+h3 { font-size: 14pt; }
+
+h4 { font-size: 12pt; }
+
+h5 { font-size: 11pt; }
+
+h6 { font-size: 10pt; }
+
+hr { height: 2pt; color: #000099; }
+
+img { border: 0pt none; }
+
+/* table {width:99%; table-layout:fixed;} */
+table {
+	border-width: 2px; border-style: solid; border-color: #000099;
+}
+
+th, td { border-width: 0px; border-style: none; text-align: left; }
+
+th { border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: #000099; }
+
+td { border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: #9999CC; }
+
+address {
+	font-family: sans-serif; font-style: italic; text-align: center;
+	font-size: 85%;
+	color: #333399; background-color: #CCCCFF;
+	margin-left: 5%; margin-right: 5%; margin-top: 5pt; margin-bottom: 0pt;
+	border-style: solid; border-width: 3px 0pt 0pt; border-color: #333399;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 10px; padding-right: 10px;
+}
+
+/* additional styles */
+
+/* navigation bar */
+.nav {
+	font-family: sans-serif; text-align: left;
+	color: #000000; background-color: #FFFFFF;
+	margin-left: 0%; margin-right: 0%; margin-bottom: 0px; margin-top: 0px;
+	border-style: solid; border-width: 0px 1px 2px; border-color: #333399;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 10px; padding-right: 10px;
+	top: 0%; left: 1%; width: 96%; max-height: 1.7em;
+	z-index: 1; overflow: hidden; position: fixed;
+}
+
+.navbot {
+	font-family: sans-serif; text-align: right;
+	color: #000000; background-color: #FFFFFF;
+	margin-left: 0%; margin-right: 0%; margin-bottom: 0px; margin-top: 1px;
+	border-style: solid; border-width: 2px 1px 1px; border-color: #333399;
+	padding-top: 2px; padding-bottom: 3px; padding-left: 10px; padding-right: 10px;
+}
+
+.navspace { height: 1em; }
+
+.blind {
+	border-width: 0px; border-style: none; border-color: #000099;
+}
+
+/* hr replacements */
+.hr2 {
+	border-style: solid; border-width: 1px; border-color: #000099;
+	margin: 5pt 2px;
+	padding-top: 1px; padding-bottom: 1px; padding-left: 0px; padding-right: 0px;
+}
+
+.hr2ns {
+	margin: 5pt 2px; border-style: solid; border-width: 2px 0pt;
+	border-color: #000099; background-color: #000099; color: #000099;
+}
+
+.small { font-size: 75%; }
+
+.less { font-size: 85%; }
+
+.big { font-size: 14pt; font-weight: bold; }
+
+.bigger { font-size: 16pt; font-weight: bold; }
+
+.bold { font-weight: bold; }
+
+.left { text-align: left; }
+
+.right { text-align: right; }
+
+.center { text-align: center; }
+
+.vmid { vertical-align: middle }
+
+.vtop { vertical-align: top }
+
+.vbot { vertical-align: bottom }
+
+.vspace { height: 12pt }
+
+.red { color: #FF0000 }
+
+.green { color: #00CC00 }
+
+.blue { color: #3366FF }
+
+.depth0 { margin-left: 0%; }
+
+.depth1 { margin-left: 2%; }
+
+.depth2 { margin-left: 5%; }
+
+.depth3 { margin-left: 10%; }
+
+.depth4 { margin-left: 15%; }
+
+.depth5 { margin-left: 20%; }
+
+.depth6 { margin-left: 25%; }
+
+.depth7 { margin-left: 30%; }
+
+.depth8 { margin-left: 35%; }
+
+.depth9 { margin-left: 40%; }
+
+.depth10 { margin-left: 45%; }
+
+.depth11 { margin-left: 50%; }
+
+.depth12 { margin-left: 55%; }
+
+.depth13 { margin-left: 60%; }
+
+.depth14 { margin-left: 65%; }
+
+.depth15 { margin-left: 70%; }
+
+.depth16 { margin-left: 75%; }
+
+.depth17 { margin-left: 80%; }
+
+.depth18 { margin-left: 85%; }
+
+.depth19 { margin-left: 90%; }
+
+.depth20 { margin-left: 95%; }
+
+.tcenter1 { width: 100%; margin-left: 0%; margin-right: 0%; }
+
+.tcenter2 { width: 95%; margin-left: 2.5%; margin-right: 2.5%; }
+
+.tcenter3 { width: 90%; margin-left: 5%; margin-right: 5%; }
+
+.tcenter4 { width: 85%; margin-left: 7.5%; margin-right: 7.5%; }
+
+.tcenter5 { width: 80%; margin-left: 10%; margin-right: 10%; }
+
+.tcenter6 { width: 75%; margin-left: 12.5%; margin-right: 12.5%; }
+
+.tcenter7 { width: 70%; margin-left: 15%; margin-right: 15%; }
+
+.tcenter8 { width: 65%; margin-left: 17.5%; margin-right: 17.5%; }
+
+.tcenter9 { width: 60%; margin-left: 20%; margin-right: 20%; }

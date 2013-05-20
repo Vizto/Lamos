@@ -1,0 +1,63 @@
+lamos
+Copyright 2008-2009 Michel Messerschmidt
+Homepage: http://www.michel-messerschmidt.de/lamos/
+
+
+1. About 
+lamos is a PHP-based web software for bookmark management and exchange.
+
+
+2. License
+
+lamos is licensed under the GPL v3 (or later).
+
+This program is free software: you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation, either version 3 of the License, or (at 
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License 
+along with this program in the file LICENSE. 
+If not, see http://www.gnu.org/licenses/
+
+ 
+
+3. System Requirements
+ - Web server with HTTP Basic authentication support (e.g. Apache)
+ - PHP 5.2 (or higher)
+ - MySQL 5.03 (or higher)
+
+
+4. Installation
+
+At present there is no installation tool. Therefore this is yet a manual 
+task and requires good knowledge of the target system.
+
+Basic steps:
+ - Extract the contents of lamos.tar.gz into a directory on the web server
+ - Password-protect the installation directory (eg. with HTTP basic 
+   authentication via .htaccess)
+   Note: Everybody who should access the lamos web pages must have access 
+         to the directory with a username and password. 
+         Additionally each username must be inserted as "name" in the 
+         database table lms_user.
+ - Setup the database tables using the SQL statements in the 
+   subdirectory "installation"
+   Note: If other table names will be used, the SQL statements must be 
+         adjusted
+ - Edit the the configuration file config/lms_config.inc.php to include
+   your project title, url and database access settings
+Optional:
+ - Move the configuration file "config/lms_config.inc.php" to 
+   a secure location (outside the web-accessible area)
+ - Adjust index.php, count.php, lledit.php and linklist.inc.php to the 
+   new location of the configuration file: Update the folowing line 
+   near the top of the file:
+       require_once("config/lms_config.inc.php");
+
+

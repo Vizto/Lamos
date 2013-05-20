@@ -1,0 +1,14 @@
+DONE	- fix add form
+DONE	- change lms_user table to require unique usernames
+DONE	- enhance count.php to also increment category counters
+DONE	- improve output layout (esp. top links)
+	- implement category list re-initalization function
+	- enhance edit page to change sort order of categories
+	- enhance edit page to edit entries
+	- enhance edit page to delete entries
+DONE	- l10n
+	- add "category cloud"
+	- user management
+	- use PDO instead of mysqli
+	- be compatible with mysql and postgresql
+

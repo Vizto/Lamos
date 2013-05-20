@@ -1,0 +1,30 @@
+0.6:
+- tested and finalized database upgrade script
+- implemented more efficient category sort using linked lists in the
+  database. The database table definition had to be changed, but 
+  existing database tables can be converted with a provided script.
+- bugfix: menulist was not always displayed
+- localization completed for: en, de
+- started localization of the project
+
+0.5:
+- implemented category counters
+- bugfix: entries without selection of a category were not refused
+- bugfix: private links were not handled properly
+
+0.4:
+- improved output of top link and search pages to show the category 
+  of each link
+- minor layout changes
+
+0.3:
+- this project has a proper name now and not only a working title
+- updated all files with new project name
+- created packaging script
+
+0.2:
+- first public release
+
+0.1:
+- initial version
+
