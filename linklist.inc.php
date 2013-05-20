@@ -22,7 +22,7 @@
 
 
 // include configuration and shared code
-require_once("config/lms_config.inc.php");
+require_once("config/config.php");
 require_once("mm_shared.inc.php");
 
 

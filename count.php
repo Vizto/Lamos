@@ -25,7 +25,7 @@ ini_set("log_errors", "1");
 ini_set("display_errors", "0");
 
 // include configuration
-require_once("config/lms_config.inc.php");
+require_once("config/config.php");
 
 if(DEBUG === TRUE) {
 	// be verbose
