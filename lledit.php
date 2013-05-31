@@ -19,28 +19,23 @@
  * along with this program in the file LICENSE. 
  * If not, see http://www.gnu.org/licenses/
  */
-
-error_reporting(0);
-ini_set("log_errors", "1");
-ini_set("display_errors", "0");
-
-// include configuration
-require_once("config/config.php");
-
-if(DEBUG === TRUE) {
-	// be verbose
-	error_reporting(E_ALL | E_STRICT);
-	ini_set("display_errors", "1");
+// Measure processing time
+define('TIME_START', microtime(TRUE));
+try {
+	require_once './init.php';
+	ob_start();
+	//
+	ob_end_flush();
+} catch(LamosException $e) {
+	echo $e;
 }
 
 // include localization strings
 // as a side effect the array $l10n is defined inside the included file
 require_once("locale/".LMS_LANG.".inc.php");
 
-// include shared code
-require_once("mm_shared.inc.php");
-require_once("linklist.inc.php");
 
+echo 'here';
 define("THIS_FILE", $_SERVER['SCRIPT_FILENAME']);
 // determine used protocol from request headers
 $proto = "http";
@@ -651,4 +646,83 @@ function cat_resort($parent, $user) {
 }
 
 
-?>
+function get_userid($name, $db) {
+	// set id of the "public" user as the default return value
+	// (in case of error or if the username is not found)
+	$ret     = 0;
+	$query   = 'SELECT userid FROM '.T_USER.' WHERE name=?';
+	$db_stmt = mysqli_stmt_init($db);
+	if(mysqli_stmt_prepare($db_stmt, $query) and
+		mysqli_stmt_bind_param($db_stmt, "s", $name) and
+			mysqli_stmt_execute($db_stmt) and
+				mysqli_stmt_bind_result($db_stmt, $uid) and
+					mysqli_stmt_fetch($db_stmt)
+	) {
+		$ret = $uid;
+	}
+	mysqli_stmt_close($db_stmt);
+
+	return $ret;
+}
+
+
+function print_begin($title) {
+	// split xml expression in string to avoid parser confusion in vim
+	echo '<?xml version="1.0" encoding="UTF-8" ?'.'>'."\n";
+	echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"'."\n";
+	echo '    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'."\n";
+	echo '<?xml-stylesheet type="text/css" href="lms.css" ?'.'>'."\n";
+	echo "\n";
+	echo '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">'."\n";
+	echo '<head>'."\n";
+	echo '        <title>'.$title.'</title>'."\n";
+	echo '        <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />'."\n";
+	echo '        <!-- pages expire immediately and should not be cached  -->'."\n";
+	echo '        <meta http-equiv="expires" content="0" />'."\n";
+	echo '        <meta name="author" content="Michel Messerschmidt" />'."\n";
+	echo '        <meta name="robots" content="noindex" />'."\n";
+	echo '        <meta name="language" content="'.LMS_LANG.'" />'."\n";
+	echo '        <meta http-equiv="Content-Style-Type" content="text/css" />'."\n";
+	echo '        <link rel="stylesheet" href="lms.css" type="text/css" />'."\n";
+	echo '</head>'."\n";
+	echo '<body>'."\n";
+}
+
+
+function print_nav(&$cats, $show_edit) {
+	global $l10n;
+	echo '    <!-- Navbar -->'."\n";
+	echo '    <form id="catsel" name="catsel" action="'.MAIN_URL.'" method="post" accept-charset="UTF-8">'."\n";
+	echo '        <div class="nav">'."\n";
+	echo '            <a href="../index.html" title="'.
+		$l10n['lnk_title_start_page'].'">Home</a> - '."\n";
+	echo '            <a href="index.php" hreflang="'.LMS_LANG.
+		'" title="'.$l10n['txt_top'].' '.TOPLIST.' '.
+		$l10n['txt_links'].'">'.LMS_NAME.'</a> -&nbsp;'."\n";
+	echo '            <select name="showtree" size="1" tabindex="1" '.
+		'onchange="document.catsel.submit()" >'."\n";
+	echo '                <option selected="selected" value="-3">'.
+		$l10n['frm_sel_default']."</option>\n";
+	echo '                <option value="-2">['.$l10n['txt_top'].'&nbsp;'.
+		TOPLIST.'&nbsp;'.$l10n['txt_links'].']</option>'."\n";
+	echo '                <option value="-1">['.$l10n['txt_private_links'].']</option>'."\n";
+	echo '                <option value="0">['.$l10n['txt_all'].']</option>'."\n";
+	print_cat_tree(0, MAXDEPTH, $cats);
+	echo '            </select>&nbsp;&nbsp;'."\n";
+	echo '            <input type="submit" value="'.
+		$l10n['frm_submit_cat_sel'].'" tabindex="2" />'."\n";
+	echo '            &nbsp;&nbsp;'."\n";
+	echo '            <input type="text" id="searchkey" name="searchkey" size="20" tabindex="3" />'."\n";
+	echo '            <input type="submit" name="search_submit" value="'.
+		$l10n['frm_submit_search'].'" tabindex="4" />'."\n";
+	if($show_edit == TRUE) {
+		echo '            &nbsp;&nbsp;<a href="lledit.php">'.$l10n['lnk_edit'].'</a>'."\n";
+	}
+
+
+	echo '        </div>'."\n";
+	echo '    </form>'."\n";
+	echo '    <div class="navspace"><a name="top" id="top"></a></div>'."\n";
+	echo '    <div class="navspace"><a name="top" id="top"></a></div>'."\n";
+	echo "\n";
+}

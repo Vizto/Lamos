@@ -20,8 +20,6 @@
  * If not, see http://www.gnu.org/licenses/
  */
 
-error_reporting(E_ERROR);
-//error_reporting(E_ALL | E_STRICT);
 
 // sanitize untrusted database input data (from GET, POST, ...)
 function mm_db_filter_input($db, $data, $type) {

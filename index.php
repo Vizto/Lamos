@@ -24,23 +24,13 @@
 define('TIME_START', microtime(TRUE));
 try {
 	require_once './init.php';
+	ob_start();
+	//
+	ob_end_flush();
 } catch(LamosException $e) {
 }
 
-exit;
 
-error_reporting(0);
-ini_set("log_errors", "1");
-ini_set("display_errors", "0");
-
-// include configuration
-require_once("config/config.php");
-
-if(DEBUG === TRUE) {
-	// be verbose
-	error_reporting(E_ALL | E_STRICT);
-	ini_set("display_errors", "1");
-}
 
 // include localization strings
 // as a side effect the array $l10n is defined inside the included file
